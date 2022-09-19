@@ -1,4 +1,4 @@
-if (!MYSQL_SE_DATABASE || !MYSQL_SE_USERNAME || !MYSQL_SE_PASSWORD) return;
+if (!process.env.MYSQL_SE_DATABASE || !process.env.MYSQL_SE_USERNAME || !process.env.MYSQL_SE_PASSWORD) return;
 
 const mysql = require("mysql");
 
@@ -12,6 +12,7 @@ const seCon = mysql.createConnection({
   database: seDataBase,
   user: seUserName,
   password: sePassWord,
+  port: 31337,
 });
 
 module.exports = seCon;

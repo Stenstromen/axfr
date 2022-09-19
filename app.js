@@ -5,6 +5,7 @@ const app = express();
 const axfrRouter = require("./routers/axfr.router");
 
 app.set("view engine", "ejs");
+app.use(express.static("public"));
 app.use(compression());
 app.use(axfrRouter);
 

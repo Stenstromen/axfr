@@ -1,0 +1,15 @@
+<div id="viewse">
+    <div>
+        <h1>View se</h1>
+    </div>
+</div>
+<script>
+    fetch('http://localhost:8080/se')
+        .then(res => res.json())
+        .then((out) => {
+            console.log(out);
+            for (let i = 0; i < out.length; i++) {
+                console.log(out[i].amount);
+            }
+    }).catch(err => console.error(err));
+    </script>

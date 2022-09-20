@@ -23,3 +23,7 @@
     width: 100%;
     margin-top: 20px;
 }
+
+#showdates {
+    border:1px solid black;
+}

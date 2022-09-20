@@ -1,4 +1,18 @@
 <%- include("partials/header.ejs") %>
-<%- include("partials/start.ejs") %>
-<%- include("partials/viewse.ejs") %>
+<div id="startpage">
+    <h1>AXFR.se</h1>
+    <div>
+        <button id="dotse">.SE</button><br>
+        <button id="dotnu">.NU</button>
+    </div>
+</div>
+<script>
+    const viewse = document.getElementById("viewse");
+    const startpage = document.getElementById("startpage");
+    const dotse = document.getElementById("dotse");
+    const dotnu = document.getElementById("dotnu");
+    dotse.addEventListener("click", () => {
+        location.href="/se"
+    })
+</script>
 <%- include("partials/footer.ejs") %>

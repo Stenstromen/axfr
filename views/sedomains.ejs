@@ -1,0 +1,91 @@
+<%- include("partials/header.ejs") %>
+<div>
+  <div id="showdomains"></div>
+  <p>
+    <strong id="page">1</strong><strong> / </strong
+    ><strong><%- maxPage %></strong>
+  </p>
+  <div>
+    <button id="prev">&lt;&lt;&lt;</button>
+    <button id="next">&gt;&gt;&gt;</button>
+  </div>
+</div>
+<script>
+    let tableFromJson = () => {
+      // the json data.
+      const myBooks = <%- result %>;
+
+      // Extract value from table header.
+      // ('Book ID', 'Book Name', 'Category' and 'Price')
+      let col = [];
+      for (let i = 0; i < myBooks.length; i++) {
+        for (let key in myBooks[i]) {
+          if (col.indexOf(key) === -1) {
+            col.push(key);
+          }
+        }
+      }
+
+      // Create table.
+      const table = document.createElement("table");
+
+      // Create table header row using the extracted headers above.
+      let tr = table.insertRow(-1); // table row.
+
+      for (let i = 0; i < col.length; i++) {
+        let th = document.createElement("th"); // table header.
+        th.innerHTML = col[i];
+        tr.appendChild(th);
+      }
+
+      // add json data to the table as rows.
+      for (let i = 0; i < myBooks.length; i++) {
+        tr = table.insertRow(-1);
+
+        for (let j = 0; j < col.length; j++) {
+          let tabCell = tr.insertCell(-1);
+          let cell = myBooks[i][col[j]];
+          //let link = "http://localhost:8080/se/" + JSON.stringify(myBooks[i].date) + "/0"
+          tabCell.innerHTML = cell;
+        }
+      }
+
+      // Now, add the newly created table with json data, to a container.
+      const divShowData = document.getElementById("showdomains");
+      divShowData.innerHTML = "";
+      divShowData.appendChild(table);
+    };
+
+  (function() {
+      tableFromJson()
+  })();
+  const page = document.getElementById("page");
+  const prev = document.getElementById("prev");
+  const next = document.getElementById("next");
+  let prevpage = parseInt(location.pathname.split("/")[3]) - 1;
+  let nextpage = parseInt(location.pathname.split("/")[3]) + 1;
+  page.textContent = nextpage;
+
+  if (parseInt(location.pathname.split("/")[3]) === 0) {
+    prev.disabled = true;
+  }
+  if (parseInt(location.pathname.split("/")[3]) === <%- maxPage %> - 1) {
+    next.disabled = true;
+  }
+
+  prev.addEventListener("click", () => {
+    //let prevpage = parseInt(location.pathname.split("/")[3]) - 1;
+    console.log(prevpage)
+    location.href = "/" + location.pathname.split("/")[1] + "/" + location.pathname.split("/")[2] + "/" + prevpage;
+    console.log("/" + location.pathname.split("/")[1] + "/" + location.pathname.split("/")[2] + "/" + prevpage);
+    //page.textContent = prevpage;
+  });
+  next.addEventListener("click", () => {
+    //let nextpage = parseInt(location.pathname.split("/")[3]) + 1;
+    console.log(nextpage)
+    location.href = "/" + location.pathname.split("/")[1] + "/" + location.pathname.split("/")[2] + "/" + nextpage;
+    console.log("/" + location.pathname.split("/")[1] + "/" + location.pathname.split("/")[2] + "/" + nextpage);
+    //page.textContent = nextpage;
+  });
+</script>
+<%- include("partials/footer.ejs") %>

@@ -22,7 +22,7 @@ SELECT date, domain FROM domains JOIN dates ON domains.dategrp = dates.id WHERE 
 */
   const date = req.params.date;
   const page = req.params.page;
-  let rows1 = page * 30;
+  let rows1 = page * 22;
   let rows2;
   let maxPage;
   if (page === "0") {
@@ -35,10 +35,10 @@ SELECT date, domain FROM domains JOIN dates ON domains.dategrp = dates.id WHERE 
   seCon.query(maxSql, function (err, result) {
     if (err) throw err;
     //console.log(result[0].amount);
-    maxPage = Math.floor(result[0].amount / 30) + 1;
+    maxPage = Math.floor(result[0].amount / 22) + 1;
   });
 
-  const sql = `SELECT domain FROM domains JOIN dates ON domains.dategrp = dates.id WHERE date = ${date} ORDER BY domain ASC OFFSET ${rows2} ROWS FETCH FIRST 30 ROWS ONLY;`;
+  const sql = `SELECT domain FROM domains JOIN dates ON domains.dategrp = dates.id WHERE date = ${date} ORDER BY domain ASC OFFSET ${rows2} ROWS FETCH FIRST 22 ROWS ONLY;`;
   seCon.query(sql, function (err, result) {
     if (err) throw err;
     //res.end(JSON.stringify(result));

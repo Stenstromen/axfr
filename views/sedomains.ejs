@@ -1,10 +1,10 @@
 <%- include("partials/header.ejs") %>
-<div>
-  <div id="showdomains"></div>
+<div id="domaincontainer">
   <p>
     <strong id="page">1</strong><strong> / </strong
     ><strong><%- maxPage %></strong>
   </p>
+  <div id="showdomains"></div>
   <div>
     <button id="prev">&lt;&lt;&lt;</button>
     <button id="next">&gt;&gt;&gt;</button>
@@ -32,11 +32,11 @@
       // Create table header row using the extracted headers above.
       let tr = table.insertRow(-1); // table row.
 
-      for (let i = 0; i < col.length; i++) {
+      /*for (let i = 0; i < col.length; i++) {
         let th = document.createElement("th"); // table header.
         th.innerHTML = col[i];
         tr.appendChild(th);
-      }
+      }*/
 
       // add json data to the table as rows.
       for (let i = 0; i < myBooks.length; i++) {

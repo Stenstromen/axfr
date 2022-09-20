@@ -27,3 +27,27 @@
 #showdates {
     border:1px solid black;
 }
+
+#domaincontainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#domaincontainer > p {
+    margin-top: 2px;
+    margin-bottom: 0px;
+}
+
+table { 
+    border-collapse: collapse; 
+}
+
+tr {
+    border:1px solid black;
+}
+
+td {
+    width: 20vw;
+    padding: 5px;
+}

@@ -1,6 +1,12 @@
 <%- include("partials/header.ejs") %>
 <div id="startpage">
-    <h1>AXFR.se</h1>
+    <h1>www.axfr.se</h1>
+    <div>
+        <p>🆕</p>
+    </div>
+    <div>
+       <h2>Newly Added | | Updated Domains For:</h2>
+    </div>
     <div>
         <button id="dotse">.SE</button><br>
         <button id="dotnu">.NU</button>
@@ -14,5 +20,9 @@
     dotse.addEventListener("click", () => {
         location.href="/se"
     })
+    dotnu.addEventListener("click", () => {
+        location.href="/nu"
+    })
+
 </script>
 <%- include("partials/footer.ejs") %>

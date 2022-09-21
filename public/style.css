@@ -1,42 +1,106 @@
-#viewse {
-    display: none;
-    width: 98vw;
-    height: 97vh;
-    grid-template-rows: 25% 75%;
-    border:1px solid black;
-    justify-content: space-evenly;
+body {
+    background-color: #ededed;
+    display: flex;
+    justify-content: center;
 }
 
 #startpage {
+    border-radius: 10px;
+    background-color: #ffffff;
     display: grid;
-    width: 98vw;
+    width: 90vw;
     height: 97vh;
-    grid-template-rows: 25% 75%;
-    border:1px solid black;
+    grid-template-rows: 20% 45% 5% 10%;
     justify-content: space-evenly;
 }
 
+#startpage > h1 {
+    text-align: center;
+}
+
+#startpage > div > p {
+    font-size: 200px;
+    text-align: center;
+    margin: 0;
+}
+
 #startpage > div > button {
+    background-color: #ffce2e;
     border: none;
-    border-radius: 25px;
+    border-radius: 5px;
     font-size: x-large;
     width: 100%;
     margin-top: 20px;
 }
 
+#startpage > div > button:hover {
+    background-color: #ffe696;
+}
+
 #showdates {
-    border:1px solid black;
+    border-radius: 10px;
 }
 
 #domaincontainer {
+    border-radius: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: #ffffff;
+    width: 90vw;
+    height: 97vh;
+}
+
+#datecontainer {
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ffffff;
+    width: 90vw;
+    height: 97vh;
 }
 
 #domaincontainer > p {
     margin-top: 2px;
     margin-bottom: 0px;
+}
+
+#domaincontainer > #nav {
+    position: absolute;
+    bottom: 4%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#domaincontainer > #nav > button {
+    background-color: #ffce2e;
+    border: none;
+    border-radius: 5px;
+    font-size: x-large;
+    /*width: 100%;
+    margin-top: 20px;*/
+}
+
+#domaincontainer > #nav > button:hover {
+    background-color: #ffe696;
+}
+
+#domaincontainer > #nav > button:disabled {
+    background-color: #ffce2e;
+    color:lightgray
+}
+
+button {
+    font-size: large;
+    margin-top: 20px;
+}
+
+#goback {
+    position: absolute;
+    bottom: 2%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 table { 

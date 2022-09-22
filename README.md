@@ -1,1 +1,16 @@
 # AXFR, view new domains
+## For .SE and .NU
+
+## Required Docker/K8s variabled
+```
+MYSQL_HOSTNAME
+MYSQL_PORT (Optional)
+
+MYSQL_SE_DATABASE
+MYSQL_SE_USERNAME
+MYSQL_SE_PASSWORD
+
+MYSQL_NU_DATABASE
+MYSQL_NU_USERNAME
+MYSQL_NU_PASSWORD
+```

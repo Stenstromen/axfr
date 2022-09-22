@@ -1,117 +1,205 @@
 body {
-    background-color: #ededed;
-    display: flex;
-    justify-content: center;
+  background-color: #ededed;
+  display: flex;
+  justify-content: center;
 }
 
 #startpage {
-    border-radius: 10px;
-    background-color: #ffffff;
-    display: grid;
-    width: 90vw;
-    height: 97vh;
-    grid-template-rows: 20% 45% 5% 10%;
-    justify-content: space-evenly;
+  border-radius: 10px;
+  background-color: #ffffff;
+  display: grid;
+  width: 90vw;
+  height: 97vh;
+  grid-template-rows: 20% 45% 5% 10%;
+  justify-content: space-evenly;
 }
 
 #startpage > h1 {
-    text-align: center;
+  text-align: center;
 }
 
 #startpage > div > p {
-    font-size: 200px;
-    text-align: center;
-    margin: 0;
+  font-size: 200px;
+  text-align: center;
+  margin: 0;
 }
 
 #startpage > div > button {
-    background-color: #ffce2e;
-    border: none;
-    border-radius: 5px;
-    font-size: x-large;
-    width: 100%;
-    margin-top: 20px;
+  background-color: #ffce2e;
+  border: none;
+  border-radius: 5px;
+  font-size: x-large;
+  width: 100%;
+  margin-top: 20px;
 }
 
 #startpage > div > button:hover {
-    background-color: #ffe696;
+  background-color: #ffe696;
 }
 
 #showdates {
-    border-radius: 10px;
+  border-radius: 10px;
+  padding-top: 80px;
 }
 
 #domaincontainer {
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #ffffff;
-    width: 90vw;
-    height: 97vh;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #ffffff;
+  width: 90vw;
+  height: 97vh;
+  padding-top: 80px;
 }
 
 #datecontainer {
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #ffffff;
-    width: 90vw;
-    height: 97vh;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #ffffff;
+  width: 90vw;
+  height: 97vh;
+}
+
+#datecontainer > p {
+    margin-bottom: 0px;
+    font-weight: bold;
 }
 
 #domaincontainer > p {
-    margin-top: 2px;
-    margin-bottom: 0px;
+  margin-top: 2px;
+  margin-bottom: 0px;
 }
 
 #domaincontainer > #nav {
-    position: absolute;
-    bottom: 4%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  position: absolute;
+  bottom: 4%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 #domaincontainer > #nav > button {
-    background-color: #ffce2e;
-    border: none;
-    border-radius: 5px;
-    font-size: x-large;
-    /*width: 100%;
-    margin-top: 20px;*/
+  background-color: #ffce2e;
+  border: none;
+  border-radius: 5px;
+  font-size: x-large;
 }
 
 #domaincontainer > #nav > button:hover {
-    background-color: #ffe696;
+  background-color: #ffe696;
 }
 
 #domaincontainer > #nav > button:disabled {
-    background-color: #ffce2e;
-    color:lightgray
+  background-color: #ffce2e;
+  color: lightgray;
+}
+
+table > tbody > tr > td > a {
+  color: black;
+}
+
+table > tbody > tr > td > a:hover {
+  color: darkgray;
 }
 
 button {
-    font-size: large;
-    margin-top: 20px;
+  font-size: large;
+  margin-top: 20px;
 }
 
 #goback {
-    position: absolute;
-    bottom: 2%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  position: absolute;
+  bottom: 2%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: x-large;
+  color: black;
 }
 
-table { 
-    border-collapse: collapse; 
+#goback:hover {
+  color: darkgray;
+}
+
+table {
+  border-collapse: collapse;
 }
 
 tr {
-    border:1px solid black;
+  border: 1px solid black;
 }
 
 td {
-    width: 20vw;
-    padding: 5px;
+  width: 20vw;
+  padding: 5px;
+}
+
+/* iPhone Portrait */
+@media screen and (max-width: 390px) {
+    h2 {
+        font-size: large;
+    }
+
+    #startpage {
+        border-radius: 10px;
+        background-color: #ffffff;
+        display: grid;
+        width: 390px;
+        height: 650px;
+        grid-template-rows: 20% 45% 5% 10%;
+        justify-content: space-evenly;
+      }
+
+      #datecontainer {
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: #ffffff;
+        width: 390px;
+        height: 650px;
+      }
+
+      #showdates {
+        border-radius: 10px;
+        padding-top: 40px;
+      }
+
+      #domaincontainer {
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: #ffffff;
+        width: 390px;
+        height: 650px;
+        padding-top: 0px;
+      }
+
+      #domaincontainer > #showdomains > table > tbody > tr > td {
+        color: black;
+        width: 280px;
+      }
+
+      #domaincontainer > #nav > button {
+        background-color: #ffce2e;
+        border: none;
+        border-radius: 5px;
+        font-size: large;
+      }
+      
+      #domaincontainer > #nav > button:disabled {
+        background-color: #ffce2e;
+        color: lightgray;
+      }
+
+      #goback {
+        position: absolute;
+        bottom: 0%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: x-large;
+        color: black;
+      }
 }

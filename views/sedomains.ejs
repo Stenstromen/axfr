@@ -64,18 +64,10 @@
   }
 
   prev.addEventListener("click", () => {
-    //let prevpage = parseInt(location.pathname.split("/")[3]) - 1;
-    console.log(prevpage)
     location.href = "/" + location.pathname.split("/")[1] + "/" + location.pathname.split("/")[2] + "/" + prevpage;
-    console.log("/" + location.pathname.split("/")[1] + "/" + location.pathname.split("/")[2] + "/" + prevpage);
-    //page.textContent = prevpage;
   });
   next.addEventListener("click", () => {
-    //let nextpage = parseInt(location.pathname.split("/")[3]) + 1;
-    console.log(nextpage)
     location.href = "/" + location.pathname.split("/")[1] + "/" + location.pathname.split("/")[2] + "/" + nextpage;
-    console.log("/" + location.pathname.split("/")[1] + "/" + location.pathname.split("/")[2] + "/" + nextpage);
-    //page.textContent = nextpage;
   });
   goback.href = location.origin + "/se"
 </script>

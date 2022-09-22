@@ -30,7 +30,11 @@ function sendSeRows(req, res) {
   const maxSql = `SELECT amount FROM dates WHERE date = ${date}`;
   seCon.query(maxSql, function (err, result) {
     if (err) throw err;
-    maxPage = Math.floor(result[0].amount / 18) + 1;
+    if (result === undefined || result.length == 0) {
+      console.log(`(.SE) Date ${date} empty or does not exist`); return
+    } else {
+      maxPage = Math.floor(result[0].amount / 18) + 1;
+    }
   });
 
   const sql = `SELECT domain FROM domains JOIN dates ON domains.dategrp = dates.id WHERE date = ${date} ORDER BY domain ASC OFFSET ${rows2} ROWS FETCH FIRST 18 ROWS ONLY;`;
@@ -68,7 +72,11 @@ function sendNuRows(req, res) {
   const maxSql = `SELECT amount FROM dates WHERE date = ${date}`;
   nuCon.query(maxSql, function (err, result) {
     if (err) throw err;
-    maxPage = Math.floor(result[0].amount / 18) + 1;
+    if (result === undefined || result.length == 0) {
+      console.log(`(.NU) Date ${date} empty or does not exist`); return
+    } else {
+      maxPage = Math.floor(result[0].amount / 18) + 1;
+    }
   });
 
   const sql = `SELECT domain FROM domains JOIN dates ON domains.dategrp = dates.id WHERE date = ${date} ORDER BY domain ASC OFFSET ${rows2} ROWS FETCH FIRST 18 ROWS ONLY;`;

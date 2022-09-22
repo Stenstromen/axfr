@@ -15,11 +15,8 @@
 </div>
 <script>
     let tableFromJson = () => {
-      // the json data.
       const nuDomains = <%- result %>;
 
-      // Extract value from table header.
-      // ('Book ID', 'Book Name', 'Category' and 'Price')
       let col = [];
       for (let i = 0; i < nuDomains.length; i++) {
         for (let key in nuDomains[i]) {
@@ -29,19 +26,10 @@
         }
       }
 
-      // Create table.
       const table = document.createElement("table");
 
-      // Create table header row using the extracted headers above.
-      let tr = table.insertRow(-1); // table row.
+      let tr = table.insertRow(-1);
 
-      /*for (let i = 0; i < col.length; i++) {
-        let th = document.createElement("th"); // table header.
-        th.innerHTML = col[i];
-        tr.appendChild(th);
-      }*/
-
-      // add json data to the table as rows.
       for (let i = 0; i < nuDomains.length; i++) {
         tr = table.insertRow(-1);
 
@@ -52,7 +40,6 @@
         }
       }
 
-      // Now, add the newly created table with json data, to a container.
       const divShowData = document.getElementById("showdomains");
       divShowData.innerHTML = "";
       divShowData.appendChild(table);
@@ -77,18 +64,10 @@
   }
 
   prev.addEventListener("click", () => {
-    //let prevpage = parseInt(location.pathname.split("/")[3]) - 1;
-    console.log(prevpage)
     location.href = "/" + location.pathname.split("/")[1] + "/" + location.pathname.split("/")[2] + "/" + prevpage;
-    console.log("/" + location.pathname.split("/")[1] + "/" + location.pathname.split("/")[2] + "/" + prevpage);
-    //page.textContent = prevpage;
   });
   next.addEventListener("click", () => {
-    //let nextpage = parseInt(location.pathname.split("/")[3]) + 1;
-    console.log(nextpage)
     location.href = "/" + location.pathname.split("/")[1] + "/" + location.pathname.split("/")[2] + "/" + nextpage;
-    console.log("/" + location.pathname.split("/")[1] + "/" + location.pathname.split("/")[2] + "/" + nextpage);
-    //page.textContent = nextpage;
   });
   goback.href = location.origin + "/nu"
 </script>

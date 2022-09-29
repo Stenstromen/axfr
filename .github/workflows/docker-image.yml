@@ -3,6 +3,8 @@ name: AXFR Docker Image CI
 on:
   push:
     branches: [ "main" ]
+    tags:
+      - "v*-k8s"
   pull_request:
     branches: [ "main" ]
 
@@ -14,15 +16,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag axfr:k8s
-      
-    - name: Docker Login
-      uses: docker/login-action@v2.0.0
-      with:
-        registry: dockr.it
-        username: ${{ secrets.DOCKR_USER }}
-        password: ${{ secrets.DOCKR_PASS }}
     
     - name: Docker meta
       id: meta
@@ -34,6 +27,13 @@ jobs:
           type=ref,event=branch
           type=ref,event=pr
           type=semver,pattern={{version}}
+    
+    - name: Docker Login
+      uses: docker/login-action@v2.0.0
+      with:
+        registry: dockr.it
+        username: ${{ secrets.DOCKR_USER }}
+        password: ${{ secrets.DOCKR_PASS }}
     
     - name: Build and push
       uses: docker/build-push-action@v3

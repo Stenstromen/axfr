@@ -3,43 +3,28 @@ name: AXFR Docker Image CI
 on:
   push:
     branches: [ "main" ]
-    tags:
-      - "v*-k8s"
   pull_request:
     branches: [ "main" ]
-
+        
 jobs:
-
-  build:
-
+  docker:
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v3
-    
-    - name: Docker meta
-      id: meta
-      uses: docker/metadata-action@v4
-      with:
-        images: dockr.it/axfr
-        flavor: latest=true
-        tags: |
-          type=ref,event=branch
-          type=ref,event=pr
-          type=semver,pattern={{version}}
-    
-    - name: Docker Login
-      uses: docker/login-action@v2.0.0
-      with:
-        registry: dockr.it
-        username: ${{ secrets.DOCKR_USER }}
-        password: ${{ secrets.DOCKR_PASS }}
-    
-    - name: Build and push
-      uses: docker/build-push-action@v3
-      with:
-        context: .
-        file: ./Dockerfile
-        push: ${{ github.ref_type == 'tag' }}
-        tags: ${{ steps.meta.outputs.tags }}
-        labels: ${{ steps.meta.outputs.labels }}
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v2
+      
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+      
+      - name: Login to DockerHub
+        uses: docker/login-action@v2
+        with:
+          registry: dockr.it
+          username: ${{ secrets.DOCKR_USER }}
+          password: ${{ secrets.DOCKR_PASS }}
+      
+      - name: Build and push
+        uses: docker/build-push-action@v3
+        with:
+          push: true
+          tags: dockr.it/axfr:k8s

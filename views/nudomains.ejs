@@ -14,9 +14,13 @@
   <a id="goback">Back 2 Date List</a>
 </div>
 <script>
+  
+    let nuDomains = [];
+    let infPage = 0;
+        
     let tableFromJson = () => {
-      const nuDomains = <%- result %>;
-
+      console.log("rantable")
+      
       let col = [];
       for (let i = 0; i < nuDomains.length; i++) {
         for (let key in nuDomains[i]) {
@@ -45,9 +49,7 @@
       divShowData.appendChild(table);
     };
 
-  (function() {
-      tableFromJson()
-  })();
+
   const page = document.getElementById("page");
   const prev = document.getElementById("prev");
   const next = document.getElementById("next");
@@ -70,5 +72,28 @@
     location.href = "/" + location.pathname.split("/")[1] + "/" + location.pathname.split("/")[2] + "/" + nextpage;
   });
   goback.href = location.origin + "/nu"
+
+  const loadMore = () => {
+      console.log(`http://localhost:8080/nu/inf/20221001/${infPage}`)
+      fetch(`http://localhost:8080/nu/inf/20221001/${infPage}`)
+      .then(response=>response.json())
+      .then(data=>{
+        nuDomains = data;
+      })
+      infPage++;
+      tableFromJson();
+      console.log(nuDomains)
+    }
+
+  window.addEventListener('scroll',()=>{
+    if(window.scrollY + window.innerHeight >= 
+    document.documentElement.scrollHeight){
+      loadMore();
+    }
+})
+(function() {
+      loadMore()
+      //tableFromJson()
+  })();
 </script>
 <%- include("partials/footer.ejs") %>
